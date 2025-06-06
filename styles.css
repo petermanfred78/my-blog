@@ -32,7 +32,20 @@ button {
 
 button:hover {
     background-color: #2980b9;
+}.delete-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  margin-top: 10px;
+  border-radius: 5px;
+  cursor: pointer;
 }
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
 body {
     font-family: 'Segoe UI', sans-serif;
     margin: 0;
