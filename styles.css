@@ -1,0 +1,118 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    text-align: center;
+    margin-top: 100px;
+}
+
+h1 {
+    color: #2c3e50;
+    font-size: 3em;
+}
+
+p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background: #fefefe;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #222;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.blog-post {
+    background: #f2f2f2;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-left: 5px solid #3498db;
+}
+
+.blog-post h3 {
+    margin-top: 0;
+}
+
+footer {
+    background-color: #eee;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+.blog-post img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.read-more:hover {
+    background-color: #2980b9;
+}
+@media (max-width: 600px) {
+    header, section {
+        padding: 10px;
+    }
+
+    nav a {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .blog-post img {
+        width: 100%;
+    }
+}
