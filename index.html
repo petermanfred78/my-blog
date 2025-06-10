@@ -1,301 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background: #f9f9f9;
-  }
-
-  #blog-editor {
-    background: white;
-    margin: 40px auto;
-    padding: 30px;
-    max-width: 800px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-  }
-
-  #blog-editor h2,
-  #blog-editor h3 {
-    color: #333;
-  }
-
-  input[type="text"],
-  textarea {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-  }
-
-  button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  button:hover {
-    background-color: #0056b3;
-  }
-
-  .post-card {
-    background: #ffffff;
-    border-left: 5px solid #007bff;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  }
-
-  .post-card h4 {
-    margin-bottom: 5px;
-    color: #222;
-  }
-
-  .post-card p {
-    color: #555;
-  }
-
-  .post-card small {
-    color: gray;
-  }
-</style>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Web Page</title>
-    <link rel="stylesheet" href="styles.css">
-</head><section id="contact">
-  <h2>Contact Me</h2>
-  <form action="https://formspree.io/f/your-form-id" method="POST">
-    <label>
-      Your Name:
-      <input type="text" name="name" required>
-    </label>
-    <br>
-    <label>
-      Your Email:
-      <input type="email" name="email" required>
-    </label>
-    <br>
-    <label>
-      Message:
-      <textarea name="message" required></textarea>
-    </label>
-    <br>
-    <button type="submit">Send</button>
-  </form>
-</section><script>
-  // Load saved posts when the page loads
-  window.onload = function () {
-    const saved = localStorage.getItem("myBlogPosts");
-    if (saved) {
-      document.getElementById("posts").innerHTML = saved;
-      restoreDeleteButtons(); // Reattach delete button functions
-    }
-  };
-
-  function addPost() {
-    const title = document.getElementById("post-title").value.trim();
-    const content = document.getElementById("post-content").value.trim();
-
-    if (title && content) {
-      const now = new Date();
-      const timestamp = now.toLocaleString();
-
-      const postId = Date.now(); // Unique ID
-
-      const postHTML = `
-        <div class="post-card" id="post-${postId}">
-          <h4>${title}</h4>
-          <p>${content}</p>
-          <small>Posted on ${timestamp}</small><br>
-          <button class="delete-btn" onclick="deletePost('post-${postId}')">Delete</button>
-        </div>
-      `;
-
-      const postContainer = document.getElementById("posts");
-      postContainer.innerHTML = postHTML + postContainer.innerHTML;
-
-      localStorage.setItem("myBlogPosts", postContainer.innerHTML);
-
-      document.getElementById("post-title").value = "";
-      document.getElementById("post-content").value = "";
-    } else {
-      alert("Please enter both a title and some content.");
-    }
-  }
-
-  function deletePost(postId) {
-    const postElement = document.getElementById(postId);
-    if (postElement) {
-      postElement.remove();
-      localStorage.setItem("myBlogPosts", document.getElementById("posts").innerHTML);
-    }
-  }
-
-  function restoreDeleteButtons() {
-    const buttons = document.querySelectorAll(".delete-btn");
-    buttons.forEach(btn => {
-      const id = btn.getAttribuste("onclick").match(/'([^']+)'/)[1];
-      btn.onclick = () => deletePost(id);
-    });
-  }
-</script>
-
-
-<body>
-    <div class="container">
-        <h1>Welcome to My Website!</h1>
-        <p>PETER MAGAIWA WEBSITE.</p>
-        <button>Click Me</button>
-    </div>
-</body><script>
-  // Load saved posts from localStorage when page loads
-  window.onload = function() {
-    const saved = localStorage.getItem("myBlogPosts");
-    if (saved) {
-      document.getElementById("posts").innerHTML = saved;
-    }
-  };
-
-  function addPost() {
-    const title = document.getElementById("post-title").value.trim();
-    const content = document.getElementById("post-content").value.trim();
-
-    if (title && content) {
-      const now = new Date();
-      const timestamp = now.toLocaleString();
-
-      const postHTML = `
-        <div style="background: #f0f0f0; padding: 15px; margin-bottom: 15px; border-radius: 8px;">
-          <h4 style="margin-bottom: 5px;">${title}</h4>
-          <p style="margin: 0 0 10px;">${content}</p>
-          <small style="color: gray;">Posted on ${timestamp}</small>
-        </div>
-      `;
-
-      const postContainer = document.getElementById("posts");
-      postContainer.innerHTML = postHTML + postContainer.innerHTML;
-
-      // Save updated content to localStorage
-      localStorage.setItem("myBlogPosts", postContainer.innerHTML);
-
-      // Clear inputs
-      document.getElementById("post-title").value = "";
-      document.getElementById("post-content").value = "";
-    } else {
-      alert("Please enter both a title and some content.");
-    }
-  }
-</script>
-
-</html>
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Blog</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Peter Magaiwa's Blog</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-    <header>
-        <h1>My Simple Blog</h1>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
-<section id="blog-editor" style="padding: 20px;">
-  <h2>Create a Blog Post</h2>
-  <input type="text" id="post-title" placeholder="Post Title" style="width: 100%; padding: 10px;" />
-  <br><br>
-  <textarea id="post-content" placeholder="Write your post here..." rows="5" style="width: 100%; padding: 10px;"></textarea>
-  <br><br>
-  <button onclick="addPost()" style="padding: 10px 20px;">Post</button>
+  <header>
+    <div class="navbar">
+      <div class="logo">Peter Magaiwa</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><button id="toggle-dark">Toggle Dark Mode</button></li>
+      </ul>
+    </div>
+  </header>
 
-  <hr>
-  <h3>My Blog Posts</h3>
-  <div id="posts"></div>
-</section>
-
+  <main>
     <section id="home">
-        <h2>Latest Posts</h2>
-        <div class="blog-post">
-            <h3>🌱 My First Blog Post</h3>
-            <p>Welcome to my new blog! This is where I’ll share ideas, thoughts, and tutorials. Stay tuned!</p>
-            <small>Posted on June 6, 2025</small>
-        </div>
-
-        <div class="blog-post">
-            <h3>💡 Why I Started Blogging</h3>
-            <p>I wanted a place to document my learning journey and help others too. Here's what inspired me...</p>
-            <small>Posted on June 3, 2025</small>
-        </div>
+      <h2>Welcome</h2>
+      <p>I am <strong>Peter Magaiwa</strong>, a student at <strong>Masinde Muliro University</strong> with a passion for <strong>Web Development</strong>. This is my personal blog where I share updates, ideas, and experiments.</p>
     </section>
-<script>
-  function addPost() {
-    const title = document.getElementById("post-title").value;
-    const content = document.getElementById("post-content").value;
 
-    if (title && content) {
-      const postContainer = document.getElementById("posts");
-      const newPost = document.createElement("div");
-      newPost.innerHTML = `
-        <h4>${title}</h4>
-        <p>${content}</p>
-        <hr>
-      `;
-      postContainer.prepend(newPost);
+    <section id="blog">
+      <h2>Create a Post</h2>
+      <input type="text" id="post-title" placeholder="Post Title" />
+      <textarea id="post-content" rows="5" placeholder="Post Content"></textarea>
+      
+      <label>Upload Image:</label>
+      <input type="file" id="image-upload" accept="image/*" />
+      <input type="text" id="image-url" placeholder="...or paste image URL" />
 
-      // Clear the form
-      document.getElementById("post-title").value = "";
-      document.getElementById("post-content").value = "";
-    } else {
-      alert("Please fill in both the title and content.");
-    }
-  }
-</script>
-<section id="blog-editor" style="padding: 20px; max-width: 700px; margin: auto;">
-  <h2>Create a Blog Post</h2>
-  <input type="text" id="post-title" placeholder="Post Title" style="width: 100%; padding: 10px; border-radius: 5px;" />
-  <br><br>
-  <textarea id="post-content" placeholder="Write your post here..." rows="5" style="width: 100%; padding: 10px; border-radius: 5px;"></textarea>
-  <br><br>
-  <button onclick="addPost()" style="padding: 10px 20px; border-radius: 5px; background-color: #007bff; color: white; border: none;">Post</button>
+      <label>Upload File:</label>
+      <input type="file" id="file-upload" />
+      <input type="text" id="file-url" placeholder="...or paste file URL" />
 
-  <hr>
-  <h3>My Blog Posts</h3>
-  <div id="posts"></div>
-</section>
+      <button onclick="addPost()">Publish</button>
 
-    <section id="about" style="padding: 20px;">
-  <h2>About Me</h2>
-  <p>
-    Hi! I'm a student at <strong>Masinde Muliro University</strong> with a growing passion for <strong>web development</strong>. 
-    I enjoy building websites, learning new technologies, and turning ideas into digital reality. 
-    This blog is part of my journey as I explore HTML, CSS, and more.
-  </p>
-</section>
-
+      <div id="post-container"></div>
+    </section>
 
     <section id="contact">
-        <h2>Contact</h2>
-        <p>Email me at: <a href="mailto:petermgaiwa@gmail.com">petermgaiwa@gmail.com</a></p>
+      <h2>Contact</h2>
+      <div class="contact-info">
+        <div class="info-block">
+          <span class="icon">👤</span>
+          <p><strong>Name:</strong><br>Peter Magaiwa</p>
+        </div>
+        <div class="info-block">
+          <span class="icon">📧</span>
+          <p><strong>Email:</strong><br>petermgaiwa@gmail.com</p>
+        </div>
+        <div class="info-block">
+          <span class="icon">📞</span>
+          <p><strong>Phone:</strong><br>0799206401</p>
+        </div>
+      </div>
     </section>
+  </main>
 
-    <footer>
-        <p>&copy; 2025 My Blog. All rights reserved.</p>
-    </footer>
-
+  <script src="script.js"></script>
+</body>
+</html>
